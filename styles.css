@@ -509,6 +509,8 @@ section {
     flex-direction: column;
     gap: var(--spacing-sm);
     transition: transform 0.3s ease;
+    max-width: 400px; /* Limit each screenshot to 400px wide */
+    margin: 0 auto; /* Center the item if it's smaller than grid column */
 }
 
 .screenshot-item:hover {
