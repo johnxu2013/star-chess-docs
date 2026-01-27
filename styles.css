@@ -491,31 +491,88 @@ section {
 /* Screenshots Section */
 /* ==================== */
 
+/* Screenshots Section - Updated for Real Images */
+
 .screenshots {
     background: var(--color-bg-medium);
 }
 
 .screenshots-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-lg);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-xl);
     margin-bottom: var(--spacing-lg);
 }
 
-.screenshot-placeholder {
-    aspect-ratio: 9/16;
-    background: linear-gradient(135deg, rgba(51, 102, 255, 0.1) 0%, rgba(155, 107, 255, 0.1) 100%);
-    border: 2px dashed rgba(255, 255, 255, 0.2);
-    border-radius: var(--radius-lg);
+.screenshot-item {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    transition: transform 0.3s ease;
 }
 
-.screenshot-placeholder:hover {
-    border-color: rgba(51, 102, 255, 0.5);
-    background: linear-gradient(135deg, rgba(51, 102, 255, 0.15) 0%, rgba(155, 107, 255, 0.15) 100%);
+.screenshot-item:hover {
+    transform: translateY(-8px);
+}
+
+.screenshot-image {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.screenshot-image:hover {
+    box-shadow: 0 20px 60px rgba(51, 102, 255, 0.4);
+    border-color: rgba(51, 102, 255, 0.3);
+    transform: scale(1.02);
+}
+
+.screenshot-caption {
+    text-align: center;
+    color: var(--color-text-secondary);
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin-top: var(--spacing-xs);
+}
+
+/* Hide old placeholder styles */
+.screenshot-placeholder,
+.screenshots-note {
+    display: none;
+}
+
+/* Responsive layouts */
+@media (max-width: 768px) {
+    .screenshots-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .screenshot-item:hover {
+        transform: translateY(-4px);
+    }
+}
+
+/* Desktop: 3 columns for 7 images */
+@media (min-width: 769px) and (max-width: 1199px) {
+    .screenshots-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1200px) {
+    .screenshots-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    /* Optional: Center the 7th item in the grid */
+    .screenshot-item:nth-child(7) {
+        grid-column: 2 / 3;
+    }
 }
 
 .placeholder-content {
